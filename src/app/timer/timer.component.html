@@ -1,0 +1,33 @@
+<div *ngIf="showflag">
+    <div  style="display: flex;flex-direction: row;column-gap: 20px;justify-content: center;margin-top: 40px;">
+        <div style="display: flex;flex-direction: column;row-gap: 10px;">
+            <label >Workout Time (in seconds)</label>
+            <input type="number" min="0" [(ngModel)]="workoutTime" placeholder="0">
+        </div>
+    
+        <div style="display: flex;flex-direction: column;row-gap: 10px;">
+            <label >Break Time (in seconds)</label>
+            <input type="number" min="0" [(ngModel)]="breakTime" placeholder="0">
+        </div>
+        <div style="display: flex;flex-direction: column;row-gap: 10px;">
+            <label>Total Sets</label>
+            <input type="number" min="0" [(ngModel)]="totalSets" placeholder="0">
+        </div>
+    </div>
+    <div style="display: flex;flex-direction: row;column-gap: 20px;justify-content: center;margin-top: 20px;">
+        <button [disabled]="workoutTime == 0 && breakTime == 0 && totalSets == 0" style="font-size: 18px;width: 83px;height: 40px;background: #015B41 0% 0% no-repeat padding-box;border-radius: 4px;color: white;" (click)="start()" (click)="globalassign()">Start</button>
+    </div>
+</div>
+
+
+<div *ngIf="!showflag" style="display: flex;justify-content: center;margin-top: 40px;">
+    <div style="display: flex;justify-content: center;border-radius: 50%;width: 100px;height: 100px;"
+    [style.border]="workoutTime > 0 ? '6px solid #e6ccff' : '6px solid #f34c4c'"
+    >
+        <div style="display: flex;justify-content: center;height: 100px;line-height: 100px;">
+            <span *ngIf="workoutTime > 0" style="font-size: 40px;" >{{workoutTime}}</span>
+            <span *ngIf="workoutTime == 0" style="font-size: 40px;">{{breakTime}}</span>
+        </div>
+    
+    </div>
+</div>
